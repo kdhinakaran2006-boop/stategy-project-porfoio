@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-app-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-border-base: #E2E8F0;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #64748B;
+  
+  --color-stratos-blue: #2563EB;
+  --color-stratos-indigo: #4F46E5;
+  --color-stratos-success: #16A34A;
+  --color-stratos-danger: #DC2626;
+
+  --shadow-premium: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow-premium-hover: 0 10px 15px -3px rgba(15, 23, 42, 0.05), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased bg-app-bg text-text-primary leading-normal;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-bold text-text-primary;
+  }
+}
+
+@layer utilities {
+  .premium-card {
+    @apply bg-surface border border-border-base rounded-2xl p-6 transition-all duration-300;
+  }
+
+  .premium-card-hover {
+    @apply hover:shadow-premium-hover hover:-translate-y-0.5 border-slate-200;
+  }
+
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  }
+
+  .kpi-gradient-accent {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kpi-gradient-accent::before {
+    content: "";
+    @apply absolute top-0 left-0 right-0 h-[4px] rounded-t-2xl;
+    background: linear-gradient(90deg, var(--color-stratos-blue) 0%, var(--color-stratos-indigo) 100%);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400;
+}
